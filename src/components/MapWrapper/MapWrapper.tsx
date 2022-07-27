@@ -25,8 +25,6 @@ const MapWrapper: React.FC<any> = ({ mapData }) => {
       let randomnumber = Math.floor(
         Math.random() * (mapData.restaurants.length-1)
       );
-            console.log(randomnumber);
-
       setSelectedRestaurant(mapData.restaurants[randomnumber]);
       setSelectedRestaurantcoord([
         mapData.restaurants[randomnumber].position.lat,
