@@ -12,9 +12,8 @@ const setMapData =() =>async (dispatch:any) => {
         type: LOADING,
         payload: true,
       });
-      console.log(process.env.REACT_APP_HERE_MAP_API_KEY);
       const response = await axios.get(
-        `https://discover.search.hereapi.com/v1/discover?apikey=${REACT_APP_HERE_MAP_API_KEY}&q=restaurant&in=circle:23.78031,90.40707;r=3000&language=en-us`
+        `https://discover.search.hereapi.com/v1/discover?apikey=${REACT_APP_HERE_MAP_API_KEY}&q=restaurant&in=circle:23.78031,90.40707;r=3000`
       );
         dispatch({
           type:SET_MAP_DATA,

@@ -18,27 +18,25 @@ L.Icon.Default.mergeOptions({
 
 const MapWrapper: React.FC<any> = ({ mapData }) => {
   const [selectedRestaurant, setSelectedRestaurant] = useState<any>(null);
-  const [selectedRestaurantCoord, setSelectedRestaurantcoord] = useState<any>([
-    23.78033, 90.40714,
-  ]);
+  const [selectedRestaurantCoord, setSelectedRestaurantcoord] = useState<any>([]);
   const [searchResults, setSearchResults] = useState<any[]>([]);
-
   useEffect(() => {
     if (mapData.restaurants.length) {
-      setSelectedRestaurant(
-        mapData.restaurants[
-          Math.floor(Math.random() * mapData.restaurants.length-1)
-        ]
+      let randomnumber = Math.floor(
+        Math.random() * (mapData.restaurants.length-1)
       );
-      setSelectedRestaurantcoord(
-        Object.values(mapData.restaurants[1].position)
-      );
+            console.log(randomnumber);
+
+      setSelectedRestaurant(mapData.restaurants[randomnumber]);
+      setSelectedRestaurantcoord([
+        mapData.restaurants[randomnumber].position.lat,
+        mapData.restaurants[randomnumber].position.lng,
+      ]);
     }
-  }, [mapData, setSelectedRestaurant, setSelectedRestaurantcoord]);
+  }, [mapData]);
 
   const handleChange = (searchText: string) => {
     if (searchText !== "") {
-      debugger
       const results = mapData.restaurants.filter((m: any) => {
         let titleAddress = m.title+", "+m.address.label
         return (
@@ -56,7 +54,7 @@ const MapWrapper: React.FC<any> = ({ mapData }) => {
     setSelectedRestaurantcoord(Object.values(selectedData.position));
   };
 
-  return mapData.loading ? (
+  return mapData.loading? (
     <Row justify="space-around" align="middle">
       <GlobalLoader />
     </Row>
@@ -82,10 +80,14 @@ const MapWrapper: React.FC<any> = ({ mapData }) => {
           </Row>
         </Col>
         <Col span={16}>
-          <MapView
-            selectedRestaurant={selectedRestaurant}
-            selectedRestaurantCoord={selectedRestaurantCoord}
-          />
+          {selectedRestaurantCoord.length > 0 ? (
+            <MapView
+              selectedRestaurant={selectedRestaurant}
+              selectedRestaurantCoord={selectedRestaurantCoord}
+            />
+          ) : (
+            ""
+          )}
         </Col>
       </Row>
     </Fragment>
