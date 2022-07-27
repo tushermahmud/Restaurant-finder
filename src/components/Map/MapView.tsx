@@ -7,7 +7,7 @@ interface IProps {
   selectedRestaurantCoord:any;
 }
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const MapView: React.FC<IProps> = ({
   selectedRestaurant,
   selectedRestaurantCoord,
@@ -34,11 +34,11 @@ const MapView: React.FC<IProps> = ({
             {selectedRestaurant ? selectedRestaurant.title : ""}
           </Title>
 
-          <h4>{selectedRestaurant ? selectedRestaurant.address.label : ""}</h4>
-          <span>
+          <Title level={5}>{selectedRestaurant ? selectedRestaurant.address.label : ""}</Title>
+          <Text>
             Type:{" "}
             {selectedRestaurant ? selectedRestaurant.categories[0].name : ""}
-          </span>
+          </Text>
         </Popup>
       </Marker>
     </MapContainer>
