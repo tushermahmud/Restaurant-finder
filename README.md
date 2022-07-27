@@ -12,9 +12,9 @@ In the project directory, you can run:
 
 # Designing the project
 
-The Poject is designed in such a way that if we want to extend this further we can easily do it. I have adopted the "Topdown Approch" along with redux architecture so that if the application becomes larger we can easily maintain the states of the application. The designing patter shows all the components those are used are reusable and very easy to extend and also used ant design. The design looks pretty simple and user-friendly. 
+The Poject is designed in such a way that if we want to extend this further we can easily do it. I have adopted the "Topdown Approch" along with redux architecture so that if the application becomes larger we can easily maintain the states of the application. The designing patter shows all the components those are used are reusable and very easy to extend and also used ant design. The design looks pretty simple and user-friendly with ant design.
 
 # Fuhter extenxion
 
-I i would get enough time I would love to show traffic data arround the selected restarant and also find out the direct and distance from my location. I would love to add test cases If i would have got more time. I have done some behavioural testing which mean if the application is working as expected.
+If i would get enough time I would have loved to show traffic data arround the selected restarant and also find out the direct and distance from my location. I would love to add test cases If i would have got more time. I have done some behavioural testing which mean if the application is working as expected.
 

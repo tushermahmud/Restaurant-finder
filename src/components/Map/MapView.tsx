@@ -1,11 +1,13 @@
 import React from "react"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Typography } from "antd";
 
 interface IProps {
   selectedRestaurant: any;
   selectedRestaurantCoord:any;
 }
 
+const { Title } = Typography;
 const MapView: React.FC<IProps> = ({
   selectedRestaurant,
   selectedRestaurantCoord,
@@ -28,7 +30,15 @@ const MapView: React.FC<IProps> = ({
         }
       >
         <Popup>
-          {selectedRestaurant ? selectedRestaurant.address.label : ""}
+          <Title level={4}>
+            {selectedRestaurant ? selectedRestaurant.title : ""}
+          </Title>
+
+          <h4>{selectedRestaurant ? selectedRestaurant.address.label : ""}</h4>
+          <span>
+            Type:{" "}
+            {selectedRestaurant ? selectedRestaurant.categories[0].name : ""}
+          </span>
         </Popup>
       </Marker>
     </MapContainer>

@@ -4,10 +4,10 @@ import L from "leaflet";
 import { Col, Row } from "antd";
 import "antd/dist/antd.css";
 import LocationCard from "../LocationCard/LocationCard";
-import { Alert, Spin } from "antd";
 import { connect } from "react-redux";
 import MapView from "../Map/MapView";
 import LocationAutocomplete from "../LocationAutocomplete/LocationAutocomplete";
+import GlobalLoader from "../Common/GlobalLoader";
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
@@ -34,14 +34,15 @@ const MapWrapper: React.FC<any> = ({ mapData }) => {
         Object.values(mapData.restaurants[1].position)
       );
     }
-  }, [mapData, setSelectedRestaurant]);
+  }, [mapData, setSelectedRestaurant, setSelectedRestaurantcoord]);
 
   const handleChange = (searchText: string) => {
     if (searchText !== "") {
+      debugger
       const results = mapData.restaurants.filter((m: any) => {
+        let titleAddress = m.title+", "+m.address.label
         return (
-          m.title.includes(searchText) || m.address.label.includes(searchText)
-        );
+          titleAddress.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()));
       });
       setSearchResults(results);
     }
@@ -56,13 +57,9 @@ const MapWrapper: React.FC<any> = ({ mapData }) => {
   };
 
   return mapData.loading ? (
-    <Spin tip="Loading...">
-      <Alert
-        message="Alert message title"
-        description="Further details about the context of this alert."
-        type="info"
-      />
-    </Spin>
+    <Row justify="space-around" align="middle">
+      <GlobalLoader />
+    </Row>
   ) : (
     <Fragment>
       <Row>
@@ -72,7 +69,7 @@ const MapWrapper: React.FC<any> = ({ mapData }) => {
               <LocationAutocomplete
                 handleSelect={handleSelect}
                 handleChange={handleChange}
-                searchResults={searchResults}
+                searchResults={searchResults.length ? searchResults : []}
               />
             </Col>
             <Col span={24}>
