@@ -6,7 +6,7 @@ As from the api data the coordinates for Monstarlab Bangladesh was not found, so
 
 In the project directory, you can run:
 
-### clone the project from github using `git clone `
+### clone the project from github using `git clone https://github.com/tushermahmud/Restaurant-finder.git`
 ### `npm i` ("if and error occurs due to dependency use `npm i --legacy-peer-deps` or `npm i --force`")
 ### `npm start`
 
