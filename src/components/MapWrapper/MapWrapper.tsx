@@ -52,7 +52,7 @@ const MapWrapper: React.FC<any> = ({ mapData }) => {
     setSelectedRestaurantcoord(Object.values(selectedData.position));
   };
 
-  return mapData.loading? (
+  return mapData.loading || !selectedRestaurant ? (
     <Row justify="space-around" align="middle">
       <GlobalLoader />
     </Row>
@@ -69,23 +69,15 @@ const MapWrapper: React.FC<any> = ({ mapData }) => {
               />
             </Col>
             <Col span={24}>
-              {selectedRestaurant ? (
                 <LocationCard selectedRestaurant={selectedRestaurant} />
-              ) : (
-                ""
-              )}
             </Col>
           </Row>
         </Col>
         <Col span={16}>
-          {selectedRestaurantCoord.length > 0 ? (
-            <MapView
-              selectedRestaurant={selectedRestaurant}
-              selectedRestaurantCoord={selectedRestaurantCoord}
-            />
-          ) : (
-            ""
-          )}
+          <MapView
+            selectedRestaurant={selectedRestaurant}
+            selectedRestaurantCoord={selectedRestaurantCoord}
+          />
         </Col>
       </Row>
     </Fragment>
