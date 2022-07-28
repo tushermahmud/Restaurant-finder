@@ -3,10 +3,13 @@ import "./App.css";
 import {setMapData} from "./redux/actions/MapAction"
 import {connect} from "react-redux"
 import MapWrapper from "./components/MapWrapper/MapWrapper";
+import {useDispatch } from "react-redux";
 
-const App: React.FC<any> = ({setMapData}) => {
+const App: React.FC<any> = () => {
+  const dispatch:any = useDispatch();
+
   useEffect(()=>{
-    setMapData();
+    dispatch(setMapData());
   },[])
 
   return (
@@ -16,4 +19,4 @@ const App: React.FC<any> = ({setMapData}) => {
   );
 }
 
-export default connect(null,{setMapData})(App);
+export default App;

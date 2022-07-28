@@ -4,10 +4,10 @@ import L from "leaflet";
 import { Col, Row } from "antd";
 import "antd/dist/antd.css";
 import LocationCard from "../LocationCard/LocationCard";
-import { connect } from "react-redux";
 import MapView from "../Map/MapView";
 import LocationAutocomplete from "../LocationAutocomplete/LocationAutocomplete";
 import GlobalLoader from "../Common/GlobalLoader";
+import { useSelector } from "react-redux";
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
@@ -16,10 +16,11 @@ L.Icon.Default.mergeOptions({
 });
 
 
-const MapWrapper: React.FC<any> = ({ mapData }) => {
+const MapWrapper: React.FC<any> = () => {
   const [selectedRestaurant, setSelectedRestaurant] = useState<any>(null);
   const [selectedRestaurantCoord, setSelectedRestaurantcoord] = useState<any>([]);
   const [searchResults, setSearchResults] = useState<any[]>([]);
+  const mapData = useSelector((state:any)=>state.map)
   useEffect(() => {
     if (mapData.restaurants.length) {
       let randomnumber = Math.floor(
@@ -83,7 +84,5 @@ const MapWrapper: React.FC<any> = ({ mapData }) => {
     </Fragment>
   );
 };
-const mapStateToProps = (state: any) => ({
-  mapData: state.map,
-});
-export default connect(mapStateToProps, null)(MapWrapper);
+
+export default MapWrapper;
