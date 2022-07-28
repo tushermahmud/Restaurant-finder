@@ -1,5 +1,6 @@
 import React from "react";
 import { AutoComplete } from "antd";
+import "./locationAutocomplete.scss"
 const { Option } = AutoComplete;
 
 interface IProps {
@@ -19,8 +20,8 @@ const LocationAutocomplete: React.FC<IProps> = ({handleChange, handleSelect, sea
     ));
   return (
     <AutoComplete
+      className="location-autocomplete"
       onSelect={handleSelect}
-      style={{ width: "100%" }}
       onSearch={handleChange}
       placeholder="Find Restaurants"
     >

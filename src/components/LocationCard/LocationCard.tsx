@@ -1,6 +1,6 @@
 import React from "react";
 import { Card,Typography } from "antd";
-
+import "./locationCard.scss"
 interface IProps {
   selectedRestaurant:any;
 }
@@ -10,10 +10,7 @@ const LocationCard: React.FC<IProps> = ({ selectedRestaurant }) => {
   return (
     <Card
       title={selectedRestaurant.title}
-      style={{
-        width: "100%",
-        boxShadow: "5px 8px 24px 5px rgba(208, 216, 243, 0.6)",
-      }}
+      className="location-card"
     >
       <Title level={5}>{selectedRestaurant.address.label}</Title>
       <Title level={5}>

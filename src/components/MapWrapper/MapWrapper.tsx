@@ -54,7 +54,7 @@ const MapWrapper: React.FC<any> = () => {
   };
 
   return mapData.loading || !selectedRestaurant ? (
-    <Row justify="space-around" align="middle">
+    <Row justify="center" align="middle">
       <GlobalLoader />
     </Row>
   ) : (

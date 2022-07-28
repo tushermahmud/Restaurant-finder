@@ -1,9 +1,9 @@
 import React from "react";
 import { Row, Spin } from "antd";
-
+import "./globalLoader.scss"
 const GlobalLoader: React.FC<any> = () => {
   return (
-    <Row style={{height:"100vh", width:"100vw", display:"flex", justifyContent:"center", alignItems:"center"}}>
+    <Row className="global-loader">
       <Spin tip="Loading..."></Spin>
     </Row>
   );
